@@ -60,7 +60,7 @@
         }
       },
       "post": {
-        "description": "Creates a new json",
+        "description": "Creates a translation",
         "requestBody": {
           "description": "Plant to add to the store",
           "content": {
@@ -137,7 +137,7 @@
         }
       },
       "delete": {
-        "description": "Deletes a single translation by ID",
+        "description": "Deletes a translation by ID",
         "parameters": [
           {
             "name": "id",
@@ -168,7 +168,7 @@
         }
       },
       "put": {
-        "description": "Update a particular translation by ID",
+        "description": "Update a translation by ID",
         "parameters": [
           {
             "name": "limit",
