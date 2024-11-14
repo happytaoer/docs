@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "https://api.jsontrans.com"
     }
   ],
   "security": [
@@ -19,7 +19,7 @@
     }
   ],
   "paths": {
-    "/plants": {
+    "/json/v1/translate": {
       "get": {
         "description": "Returns all plants from the system that the user has access to",
         "parameters": [
@@ -60,7 +60,7 @@
         }
       },
       "post": {
-        "description": "Creates a new plant in the store",
+        "description": "Creates a new json",
         "requestBody": {
           "description": "Plant to add to the store",
           "content": {
@@ -96,9 +96,9 @@
         }
       }
     },
-    "/plants/{id}": {
+    "/json/v1/translate/{id}": {
       "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
+        "description": "Deletes a single translation based on the ID supplied",
         "parameters": [
           {
             "name": "id",
