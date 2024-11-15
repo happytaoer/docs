@@ -1,8 +1,8 @@
 {  
   "openapi": "3.0.1",  
   "info": {  
-    "title": "OpenAPI Plant Store",  
-    "description": "test",  
+    "title": "JSON Translation API",  
+    "description": "API for JSON translation and document management",  
     "license": {  
       "name": "MIT"  
     },  
@@ -16,12 +16,12 @@
   "paths": {  
     "/json/v1/translate": {  
       "get": {  
-        "description": "Returns all translations from the system that the user has access to",  
+        "description": "Retrieve all translations",  
         "parameters": [  
           {  
             "name": "limit",  
             "in": "query",  
-            "description": "The maximum number of results to return",  
+            "description": "Maximum number of results to return",  
             "schema": {  
               "type": "integer",  
               "format": "int32"  
@@ -31,7 +31,7 @@
             "name": "jt-api-key",  
             "in": "header",  
             "required": true,  
-            "description": "API key for authentication",  
+            "description": "API authentication key",  
             "schema": {  
               "type": "string"  
             }  
@@ -39,24 +39,51 @@
         ],  
         "responses": {  
           "200": {  
-            "description": "Plant response",  
+            "description": "Successful response",  
             "content": {  
               "application/json": {  
                 "schema": {  
-                  "type": "array",  
-                  "items": {  
-                    "$ref": "#/components/schemas/Plant"  
+                  "type": "object",  
+                  "properties": {  
+                    "code": {  
+                      "type": "integer",  
+                      "example": 200  
+                    },  
+                    "msg": {  
+                      "type": "string",  
+                      "example": "Translations retrieved successfully"  
+                    },  
+                    "data": {  
+                      "type": "array",  
+                      "items": {  
+                        "$ref": "#/components/schemas/Translation"  
+                      }  
+                    }  
                   }  
                 }  
               }  
             }  
           },  
           "400": {  
-            "description": "Unexpected error",  
+            "description": "Bad request",  
             "content": {  
               "application/json": {  
                 "schema": {  
-                  "$ref": "#/components/schemas/Error"  
+                  "type": "object",  
+                  "properties": {  
+                    "code": {  
+                      "type": "integer",  
+                      "example": 400  
+                    },  
+                    "msg": {  
+                      "type": "string",  
+                      "example": "Bad request"  
+                    },  
+                    "data": {  
+                      "type": "string",  
+                      "example": ""  
+                    }  
+                  }  
                 }  
               }  
             }  
@@ -64,13 +91,13 @@
         }  
       },  
       "post": {  
-        "description": "Creates a translation",  
+        "description": "Create a new translation document",  
         "requestBody": {  
-          "description": "Plant to add to the store",  
+          "description": "Translation document to be created",  
           "content": {  
             "application/json": {  
               "schema": {  
-                "$ref": "#/components/schemas/NewPlant"  
+                "$ref": "#/components/schemas/TranslationRequest"  
               }  
             }  
           },  
@@ -81,29 +108,58 @@
             "name": "jt-api-key",  
             "in": "header",  
             "required": true,  
-            "description": "API key for authentication",  
+            "description": "API authentication key",  
             "schema": {  
               "type": "string"  
             }  
           }  
         ],  
         "responses": {  
-          "200": {  
-            "description": "Plant response",  
+          "201": {  
+            "description": "Translation document created successfully",  
             "content": {  
               "application/json": {  
                 "schema": {  
-                  "$ref": "#/components/schemas/Plant"  
+                  "type": "object",  
+                  "properties": {  
+                    "code": {  
+                      "type": "integer",  
+                      "example": 201  
+                    },  
+                    "msg": {  
+                      "type": "string",  
+                      "example": "Translation document created successfully"  
+                    },  
+                    "data": {  
+                      "type": "string",  
+                      "description": "The JSON document ID of the created translation",  
+                      "example": "5fdb00c9-ce05-484e-a7e2-5f578953114b"  
+                    }  
+                  }  
                 }  
               }  
             }  
           },  
           "400": {  
-            "description": "unexpected error",  
+            "description": "Bad request",  
             "content": {  
               "application/json": {  
                 "schema": {  
-                  "$ref": "#/components/schemas/Error"  
+                  "type": "object",  
+                  "properties": {  
+                    "code": {  
+                      "type": "integer",  
+                      "example": 400  
+                    },  
+                    "msg": {  
+                      "type": "string",  
+                      "example": "Bad request"  
+                    },  
+                    "data": {  
+                      "type": "string",  
+                      "example": ""  
+                    }  
+                  }  
                 }  
               }  
             }  
@@ -113,22 +169,23 @@
     },  
     "/json/v1/translate/{id}": {  
       "get": {  
-        "description": "Returns a translation by id",  
+        "description": "Retrieve a specific translation by ID",  
         "parameters": [  
           {  
-            "name": "limit",  
-            "in": "query",  
-            "description": "The maximum number of results to return",  
+            "name": "id",  
+            "in": "path",  
+            "description": "Unique identifier of the translation document",  
+            "required": true,  
             "schema": {  
-              "type": "integer",  
-              "format": "int32"  
+              "type": "string",  
+              "example": "5fdb00c9-ce05-484e-a7e2-5f578953114b"  
             }  
           },  
           {  
             "name": "jt-api-key",  
             "in": "header",  
             "required": true,  
-            "description": "API key for authentication",  
+            "description": "API authentication key",  
             "schema": {  
               "type": "string"  
             }  
@@ -136,64 +193,48 @@
         ],  
         "responses": {  
           "200": {  
-            "description": "Plant response",  
+            "description": "Successful retrieval of translation",  
             "content": {  
               "application/json": {  
                 "schema": {  
-                  "type": "array",  
-                  "items": {  
-                    "$ref": "#/components/schemas/Plant"  
+                  "type": "object",  
+                  "properties": {  
+                    "code": {  
+                      "type": "integer",  
+                      "example": 200  
+                    },  
+                    "msg": {  
+                      "type": "string",  
+                      "example": "Translation retrieved successfully"  
+                    },  
+                    "data": {  
+                      "$ref": "#/components/schemas/Translation"  
+                    }  
                   }  
                 }  
               }  
             }  
           },  
           "400": {  
-            "description": "Unexpected error",  
+            "description": "Bad request",  
             "content": {  
               "application/json": {  
                 "schema": {  
-                  "$ref": "#/components/schemas/Error"  
-                }  
-              }  
-            }  
-          }  
-        }  
-      },  
-      "delete": {  
-        "description": "Deletes a translation by ID",  
-        "parameters": [  
-          {  
-            "name": "id",  
-            "in": "path",  
-            "description": "ID of plant to delete",  
-            "required": true,  
-            "schema": {  
-              "type": "integer",  
-              "format": "int64"  
-            }  
-          },  
-          {  
-            "name": "jt-api-key",  
-            "in": "header",  
-            "required": true,  
-            "description": "API key for authentication",  
-            "schema": {  
-              "type": "string"  
-            }  
-          }  
-        ],  
-        "responses": {  
-          "204": {  
-            "description": "Plant deleted",  
-            "content": {}  
-          },  
-          "400": {  
-            "description": "unexpected error",  
-            "content": {  
-              "application/json": {  
-                "schema": {  
-                  "$ref": "#/components/schemas/Error"  
+                  "type": "object",  
+                  "properties": {  
+                    "code": {  
+                      "type": "integer",  
+                      "example": 400  
+                    },  
+                    "msg": {  
+                      "type": "string",  
+                      "example": "Bad request"  
+                    },  
+                    "data": {  
+                      "type": "string",  
+                      "example": ""  
+                    }  
+                  }  
                 }  
               }  
             }  
@@ -201,47 +242,157 @@
         }  
       },  
       "put": {  
-        "description": "Update a translation by ID",  
+        "description": "Update a specific translation document",  
         "parameters": [  
           {  
-            "name": "limit",  
-            "in": "query",  
-            "description": "The maximum number of results to return",  
+            "name": "id",  
+            "in": "path",  
+            "description": "Unique identifier of the translation document",  
+            "required": true,  
             "schema": {  
-              "type": "integer",  
-              "format": "int32"  
+              "type": "string",  
+              "example": "5fdb00c9-ce05-484e-a7e2-5f578953114b"  
             }  
           },  
           {  
             "name": "jt-api-key",  
             "in": "header",  
             "required": true,  
-            "description": "API key for authentication",  
+            "description": "API authentication key",  
             "schema": {  
               "type": "string"  
             }  
           }  
         ],  
+        "requestBody": {  
+          "description": "Updated translation document",  
+          "content": {  
+            "application/json": {  
+              "schema": {  
+                "$ref": "#/components/schemas/TranslationRequest"  
+              }  
+            }  
+          },  
+          "required": true  
+        },  
         "responses": {  
           "200": {  
-            "description": "Plant response",  
+            "description": "Translation updated successfully",  
             "content": {  
               "application/json": {  
                 "schema": {  
-                  "type": "array",  
-                  "items": {  
-                    "$ref": "#/components/schemas/Plant"  
+                  "type": "object",  
+                  "properties": {  
+                    "code": {  
+                      "type": "integer",  
+                      "example": 200  
+                    },  
+                    "msg": {  
+                      "type": "string",  
+                      "example": "Translation updated successfully"  
+                    },  
+                    "data": {  
+                      "$ref": "#/components/schemas/Translation"  
+                    }  
                   }  
                 }  
               }  
             }  
           },  
           "400": {  
-            "description": "Unexpected error",  
+            "description": "Bad request",  
             "content": {  
               "application/json": {  
                 "schema": {  
-                  "$ref": "#/components/schemas/Error"  
+                  "type": "object",  
+                  "properties": {  
+                    "code": {  
+                      "type": "integer",  
+                      "example": 400  
+                    },  
+                    "msg": {  
+                      "type": "string",  
+                      "example": "Bad request"  
+                    },  
+                    "data": {  
+                      "type": "string",  
+                      "example": ""  
+                    }  
+                  }  
+                }  
+              }  
+            }  
+          }  
+        }  
+      },  
+      "delete": {  
+        "description": "Delete a specific translation document",  
+        "parameters": [  
+          {  
+            "name": "id",  
+            "in": "path",  
+            "description": "Unique identifier of the translation document",  
+            "required": true,  
+            "schema": {  
+              "type": "string",  
+              "example": "5fdb00c9-ce05-484e-a7e2-5f578953114b"  
+            }  
+          },  
+          {  
+            "name": "jt-api-key",  
+            "in": "header",  
+            "required": true,  
+            "description": "API authentication key",  
+            "schema": {  
+              "type": "string"  
+            }  
+          }  
+        ],  
+        "responses": {  
+          "204": {  
+            "description": "Translation document deleted successfully",  
+            "content": {  
+              "application/json": {  
+                "schema": {  
+                  "type": "object",  
+                  "properties": {  
+                    "code": {  
+                      "type": "integer",  
+                      "example": 204  
+                    },  
+                    "msg": {  
+                      "type": "string",  
+                      "example": "Translation document deleted"  
+                    },  
+                    "data": {  
+                      "type": "string",  
+                      "example": ""  
+                    }  
+                  }  
+                }  
+              }  
+            }  
+          },  
+          "400": {  
+            "description": "Bad request",  
+            "content": {  
+              "application/json": {  
+                "schema": {  
+                  "type": "object",  
+                  "properties": {  
+                    "code": {  
+                      "type": "integer",  
+                      "example": 400  
+                    },  
+                    "msg": {  
+                      "type": "string",  
+                      "example": "Bad request"  
+                    },  
+                    "data": {  
+                      "type": "string",  
+                      "example": ""  
+                    }  
+                  }  
                 }  
               }  
             }  
@@ -252,55 +403,59 @@
   },  
   "components": {  
     "schemas": {  
-      "Plant": {  
-        "required": [  
-          "name"  
-        ],  
+      "Translation": {  
         "type": "object",  
+        "required": [  
+          "source_lang",  
+          "target_lang",  
+          "source_text",  
+          "translated_text"  
+        ],  
         "properties": {  
-          "name": {  
-            "description": "The name of the plant",  
-            "type": "string"  
+          "source_lang": {  
+            "type": "string",  
+            "description": "Source language code",  
+            "example": "en"  
           },  
-          "tag": {  
-            "description": "Tag to specify the type",  
-            "type": "string"  
+          "target_lang": {  
+            "type": "string",  
+            "description": "Target language code",  
+            "example": "zh"  
+          },  
+          "source_text": {  
+            "type": "string",  
+            "description": "Original text to be translated",  
+            "example": "Hello, world!"  
+          },  
+          "translated_text": {  
+            "type": "string",  
+            "description": "Translated text",  
+            "example": "你好，世界！"  
           }  
         }  
       },  
-      "NewPlant": {  
-        "allOf": [  
-          {  
-            "$ref": "#/components/schemas/Plant"  
-          },  
-          {  
-            "required": [  
-              "id"  
-            ],  
-            "type": "object",  
-            "properties": {  
-              "id": {  
-                "description": "Identification number of the plant",  
-                "type": "integer",  
-                "format": "int64"  
-              }  
-            }  
-          }  
-        ]  
-      },  
-      "Error": {  
-        "required": [  
-          "error",  
-          "message"  
-        ],  
+      "TranslationRequest": {  
         "type": "object",  
+        "required": [  
+          "source_lang",  
+          "target_lang",  
+          "source_text"  
+        ],  
         "properties": {  
-          "error": {  
-            "type": "integer",  
-            "format": "int32"  
+          "source_lang": {  
+            "type": "string",  
+            "description": "Source language code",  
+            "example": "en"  
           },  
-          "message": {  
-            "type": "string"  
+          "target_lang": {  
+            "type": "string",  
+            "description": "Target language code",  
+            "example": "zh"  
+          },  
+          "source_text": {  
+            "type": "string",  
+            "description": "Original text to be translated",  
+            "example": "Hello, world!"  
           }  
         }  
       }  
