@@ -3,26 +3,22 @@ title: 'Getting Started with JsonTrans API'
 description: 'Learn the basics of making requests to JsonTrans API.'
 ---
 
-
 ## API Keys
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+- **Obtaining**: To access the API, you’ll need a valid API key. Retrieve it from your account settings. If unavailable, please contact support.
+  
+- **Authentication**: This API primarily authenticates using a custom header.
 
+- **Usage**: Always include your `API key` in the request header as follows:
+
+```json
+"jt-api-key": "your_api_key_here"
+```
 
 ## JSON Response
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+Expect responses from the API in JSON format. Ensure your system can handle this data structure. For errors, check the `error` key within the JSON response.
 
+## Handling Authentication Errors
 
-
-## Authentication
-
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+If your API key is absent, not formatted correctly, or invalid, you’ll receive a `401 Unauthorized` HTTP response.
