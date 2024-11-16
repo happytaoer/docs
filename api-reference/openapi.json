@@ -301,7 +301,7 @@
           "content": {  
             "application/json": {  
               "schema": {  
-                "$ref": "#/components/schemas/TranslationRequest"  
+                "$ref": "#/components/schemas/TranslationUpdateRequest"  
               }  
             }  
           },  
@@ -510,7 +510,29 @@
             "example": "{\"text\": \"Hello, world!\"}"  
           }  
         }  
-      }  
+      },
+      "TranslationUpdateRequest": {  
+        "type": "object",  
+        "required": ["translation"],  
+        "properties": {  
+          "translation": {  
+            "type": "object",   
+            "required": ["from_lang", "to_lang"],  
+            "properties": {  
+              "from_lang": {  
+                "type": "string",  
+                "description": "Source language code",  
+                "example": "en"  
+              },  
+              "to_lang": {  
+                "type": "string",   
+                "description": "Target language code",  
+                "example": "zh"  
+              }
+            }  
+          }  
+        }  
+      }
     }  
   }  
 }
