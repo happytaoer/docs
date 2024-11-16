@@ -115,7 +115,7 @@
           }  
         ],  
         "responses": {  
-          "201": {  
+          "200": {  
             "description": "Translation document created successfully",  
             "content": {  
               "application/json": {  
@@ -124,7 +124,7 @@
                   "properties": {  
                     "code": {  
                       "type": "integer",  
-                      "example": 201  
+                      "example": 200  
                     },  
                     "msg": {  
                       "type": "string",  
