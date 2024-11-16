@@ -381,7 +381,7 @@
           }  
         ],  
         "responses": {  
-          "204": {  
+          "200": {  
             "description": "Translation document deleted successfully",  
             "content": {  
               "application/json": {  
@@ -390,7 +390,7 @@
                   "properties": {  
                     "code": {  
                       "type": "integer",  
-                      "example": 204  
+                      "example": 200  
                     },  
                     "msg": {  
                       "type": "string",  
