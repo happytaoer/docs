@@ -205,10 +205,42 @@
                     },  
                     "msg": {  
                       "type": "string",  
-                      "example": "Translation retrieved successfully"  
+                      "example": "Success"  
                     },  
                     "data": {  
-                      "$ref": "#/components/schemas/Translation"  
+                      "type": "object",  
+                      "properties": {  
+                        "uuid": {  
+                          "type": "string",  
+                          "example": "0a12dffb-0c2e-441e-9360-50c603e7bb69"  
+                        },  
+                        "origin_json": {  
+                          "type": "string",  
+                          "example": "{\"text\": \"Hello, world!\"}"  
+                        },  
+                        "translated_json": {  
+                          "type": "string",  
+                          "example": ""  
+                        },  
+                        "from_lang": {  
+                          "type": "string",  
+                          "example": "en"  
+                        },  
+                        "to_lang": {  
+                          "type": "string",  
+                          "example": "es"  
+                        },  
+                        "create_time": {  
+                          "type": "string",  
+                          "format": "date-time",  
+                          "example": "2024-11-16T02:27:42.763577+00:00"  
+                        },  
+                        "update_time": {  
+                          "type": "string",  
+                          "format": "date-time",  
+                          "example": "2024-11-16T02:27:42.763577+00:00"  
+                        }  
+                      }  
                     }  
                   }  
                 }  
@@ -406,31 +438,51 @@
       "Translation": {  
         "type": "object",  
         "required": [  
-          "source_lang",  
-          "target_lang",  
-          "source_text",  
-          "translated_text"  
+          "uuid",  
+          "origin_json",  
+          "translated_json",  
+          "from_lang",  
+          "to_lang",  
+          "create_time",  
+          "update_time"  
         ],  
         "properties": {  
-          "source_lang": {  
+          "uuid": {  
+            "type": "string",  
+            "description": "Unique identifier for the translation",  
+            "example": "0a12dffb-0c2e-441e-9360-50c603e7bb69"  
+          },  
+          "origin_json": {  
+            "type": "string",  
+            "description": "Original JSON text to be translated",  
+            "example": "{\"text\": \"Hello, world!\"}"  
+          },  
+          "translated_json": {  
+            "type": "string",  
+            "description": "Translated JSON text",  
+            "example": ""  
+          },  
+          "from_lang": {  
             "type": "string",  
             "description": "Source language code",  
             "example": "en"  
           },  
-          "target_lang": {  
+          "to_lang": {  
             "type": "string",  
             "description": "Target language code",  
-            "example": "zh"  
+            "example": "es"  
           },  
-          "source_text": {  
+          "create_time": {  
             "type": "string",  
-            "description": "Original text to be translated",  
-            "example": "Hello, world!"  
+            "format": "date-time",  
+            "description": "Timestamp when the translation was created",  
+            "example": "2024-11-16T02:27:42.763577+00:00"  
           },  
-          "translated_text": {  
+          "update_time": {  
             "type": "string",  
-            "description": "Translated text",  
-            "example": "你好，世界！"  
+            "format": "date-time",  
+            "description": "Timestamp when the translation was last updated",  
+            "example": "2024-11-16T02:27:42.763577+00:00"  
           }  
         }  
       },  
@@ -454,10 +506,8 @@
           },  
           "origin_json": {  
             "type": "string",  
-            "description": "Original text to be translated",  
-            "example": {
-              "key": "hello world!"
-            }
+            "description": "Original JSON text to be translated",  
+            "example": "{\"text\": \"Hello, world!\"}"  
           }  
         }  
       }  
