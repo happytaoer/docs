@@ -16,7 +16,7 @@
   "paths": {  
     "/json/v1/translate": {  
       "get": {  
-        "description": "Retrieve all translations",  
+        "description": "Retrieve translations",  
         "parameters": [  
           {  
             "name": "limit",  
