@@ -46,7 +46,7 @@
       ]
     },
     {
-      "group": "translation",
+      "group": "Translation",
       "pages": [
         "api-reference/endpoint/get",
         "api-reference/endpoint/create",
