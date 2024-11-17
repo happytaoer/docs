@@ -521,7 +521,98 @@
           }  
         }  
       }  
+    },
+    "/json/v1/languages/detect": {  
+    "post": {  
+      "description": "Detect the language of the provided text",  
+      "parameters": [  
+        {  
+          "name": "jt-api-key",  
+          "in": "header",   
+          "required": true,  
+          "description": "API authentication key",  
+          "schema": {  
+            "type": "string"  
+          }  
+        }  
+      ],  
+      "requestBody": {  
+        "description": "Text for language detection",  
+        "required": true,  
+        "content": {  
+          "application/json": {  
+            "schema": {  
+              "type": "object",  
+              "required": ["source_text"],  
+              "properties": {  
+                "source_text": {  
+                  "type": "string",  
+                  "description": "Text to be analyzed for language detection",  
+                  "example": "hello!"  
+                }  
+              }  
+            }  
+          }  
+        }  
+      },  
+      "responses": {  
+        "200": {  
+          "description": "Successful language detection",  
+          "content": {  
+            "application/json": {  
+              "schema": {  
+                "type": "object",  
+                "properties": {  
+                  "code": {  
+                    "type": "integer",  
+                    "example": 200  
+                  },  
+                  "msg": {  
+                    "type": "string",  
+                    "example": "Language detected successfully"  
+                  },  
+                  "data": {  
+                    "type": "object",  
+                    "properties": {  
+                      "detected_lang_code": {  
+                        "type": "string",  
+                        "description": "Detected language code",  
+                        "example": "en"  
+                      }  
+                    }  
+                  }  
+                }  
+              }  
+            }  
+          }  
+        },  
+        "400": {  
+          "description": "Bad request",  
+          "content": {  
+            "application/json": {  
+              "schema": {  
+                "type": "object",  
+                "properties": {  
+                  "code": {  
+                    "type": "integer",  
+                    "example": 400  
+                  },  
+                  "msg": {  
+                    "type": "string",  
+                    "example": "Bad request"  
+                  },  
+                  "data": {  
+                    "type": "string",  
+                    "example": ""  
+                  }  
+                }  
+              }  
+            }  
+          }  
+        }  
+      }  
     }  
+  }  
   },  
   "components": {  
     "schemas": {  

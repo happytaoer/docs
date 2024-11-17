@@ -58,7 +58,8 @@
     {
       "group": "Languages",
       "pages": [
-        "api-reference/endpoint/getlang"
+        "api-reference/endpoint/getlang",
+        "api-reference/endpoint/detectlang"
       ]
     }
   ],
