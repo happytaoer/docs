@@ -431,6 +431,96 @@
           }  
         }  
       }  
+    },
+    "/json/v1/languages": {  
+      "get": {  
+        "description": "Retrieve supported languages",  
+        "parameters": [  
+          {  
+            "name": "jt-api-key",  
+            "in": "header",   
+            "required": true,  
+            "description": "API authentication key",  
+            "schema": {  
+              "type": "string"  
+            }  
+          }  
+        ],  
+        "responses": {  
+          "200": {  
+            "description": "Successful retrieval of supported languages",  
+            "content": {  
+              "application/json": {  
+                "schema": {  
+                  "type": "object",  
+                  "properties": {  
+                    "code": {  
+                      "type": "integer",  
+                      "example": 200  
+                    },  
+                    "msg": {  
+                      "type": "string",  
+                      "example": "Languages retrieved successfully"  
+                    },  
+                    "data": {  
+                      "type": "object",  
+                      "properties": {  
+                        "languages": {  
+                          "type": "array",  
+                          "items": {  
+                            "type": "object",  
+                            "properties": {  
+                              "code": {  
+                                "type": "string",  
+                                "description": "Language code",
+                                "example":"en"
+                              },  
+                              "name": {  
+                                "type": "string",   
+                                "description": "Language name",
+                                "example":"English"
+                              }  
+                            }  
+                          }  
+                        },  
+                        "total": {  
+                          "type": "integer",  
+                          "description": "Total number of supported languages",
+                          "example":1
+                        }  
+                      }  
+                    }  
+                  }  
+                }  
+              }  
+            }  
+          },  
+          "400": {  
+            "description": "Bad request",  
+            "content": {  
+              "application/json": {  
+                "schema": {  
+                  "type": "object",  
+                  "properties": {  
+                    "code": {  
+                      "type": "integer",  
+                      "example": 400  
+                    },  
+                    "msg": {  
+                      "type": "string",  
+                      "example": "Bad request"  
+                    },  
+                    "data": {  
+                      "type": "string",  
+                      "example": ""  
+                    }  
+                  }  
+                }  
+              }  
+            }  
+          }  
+        }  
+      }  
     }  
   },  
   "components": {  

@@ -54,6 +54,12 @@
         "api-reference/endpoint/getbyid",
         "api-reference/endpoint/update"
       ]
+    },
+    {
+      "group": "Languages",
+      "pages": [
+        "api-reference/endpoint/getlang"
+      ]
     }
   ],
   "footerSocials": {
