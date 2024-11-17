@@ -81,7 +81,7 @@
                     },  
                     "data": {  
                       "type": "string",  
-                      "example": ""  
+                      "example": {}  
                     }  
                   }  
                 }  
@@ -521,7 +521,7 @@
                     },  
                     "data": {  
                       "type": "string",  
-                      "example": ""  
+                      "example": {}  
                     }  
                   }  
                 }  
@@ -612,7 +612,7 @@
                   },  
                   "data": {  
                     "type": "string",  
-                    "example": ""  
+                    "example": {}
                   }  
                 }  
               }  
