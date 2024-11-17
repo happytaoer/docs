@@ -234,7 +234,7 @@
                         },  
                         "translated_json": {  
                           "type": "string",  
-                          "example": ""  
+                          "example": "{\"text\":\"你好，世界!\"}"  
                         },  
                         "from_lang": {  
                           "type": "string",  
@@ -242,7 +242,7 @@
                         },  
                         "to_lang": {  
                           "type": "string",  
-                          "example": "es"  
+                          "example": "zh"  
                         },  
                         "create_time": {  
                           "type": "string",  
@@ -660,7 +660,7 @@
           "translated_json": {  
             "type": "string",  
             "description": "Translated JSON text",  
-            "example": ""  
+            "example": "{\"text\":\"你好，世界!\"}"  
           },  
           "from_lang": {  
             "type": "string",  
@@ -670,7 +670,7 @@
           "to_lang": {  
             "type": "string",  
             "description": "Target language code",  
-            "example": "es"  
+            "example": "zh"  
           },  
           "create_time": {  
             "type": "string",  
