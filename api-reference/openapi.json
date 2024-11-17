@@ -51,12 +51,22 @@
                     },  
                     "msg": {  
                       "type": "string",  
-                      "example": "Translations retrieved successfully"  
+                      "example": "Success"  
                     },  
                     "data": {  
-                      "type": "array",  
-                      "items": {  
-                        "$ref": "#/components/schemas/Translation"  
+                      "type": "object",  
+                      "properties": {  
+                        "translations": {  
+                          "type": "array",  
+                          "items": {  
+                            "$ref": "#/components/schemas/Translation"  
+                          }  
+                        },  
+                        "total": {  
+                          "type": "integer",  
+                          "description": "Total number of translations",
+                          "example":1
+                        }  
                       }  
                     }  
                   }  
@@ -80,7 +90,7 @@
                       "example": "Bad request"  
                     },  
                     "data": {  
-                      "type": "string",  
+                      "type": "object",  
                       "example": {}  
                     }  
                   }  
@@ -89,7 +99,7 @@
             }  
           }  
         }  
-      },  
+      } ,  
       "post": {  
         "description": "Create a new translation document",  
         "requestBody": {  
