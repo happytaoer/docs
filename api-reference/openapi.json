@@ -431,7 +431,7 @@
                     },  
                     "data": {  
                       "type": "string",  
-                      "example": ""  
+                      "example": {}  
                     }  
                   }  
                 }  
