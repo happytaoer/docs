@@ -131,9 +131,13 @@
                       "example": "Translation document created successfully"  
                     },  
                     "data": {  
-                      "type": "string",  
-                      "description": "The JSON document ID of the created translation",  
-                      "example": "5fdb00c9-ce05-484e-a7e2-5f578953114b"  
+                      "properties": {  
+                        "id": {  
+                          "type": "string",  
+                          "description": "The JSON document ID of the created translation",  
+                          "example": "5fdb00c9-ce05-484e-a7e2-5f578953114b"  
+                        }  
+                      }  
                     }  
                   }  
                 }  
