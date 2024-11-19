@@ -227,7 +227,7 @@
                     "data": {  
                       "type": "object",  
                       "properties": {  
-                        "uuid": {  
+                        "id": {  
                           "type": "string",  
                           "example": "0a12dffb-0c2e-441e-9360-50c603e7bb69"  
                         },  
@@ -641,7 +641,7 @@
       "Translation": {  
         "type": "object",  
         "required": [  
-          "uuid",  
+          "id",  
           "origin_json",  
           "translated_json",  
           "from_lang",  
@@ -650,7 +650,7 @@
           "update_time"  
         ],  
         "properties": {  
-          "uuid": {  
+          "id": {  
             "type": "string",  
             "description": "Unique identifier for the translation",  
             "example": "0a12dffb-0c2e-441e-9360-50c603e7bb69"  
