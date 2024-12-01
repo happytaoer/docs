@@ -42,6 +42,22 @@
             }  
           },  
           {  
+            "name": "from_lang",  
+            "in": "query",  
+            "description": "Source language code",  
+            "schema": {  
+              "type": "string"
+            }  
+          },  
+          {  
+            "name": "to_lang",  
+            "in": "query",  
+            "description": "Target language code",  
+            "schema": {  
+              "type": "string"
+            }  
+          },  
+          {  
             "name": "jt-api-key",  
             "in": "header",  
             "required": true,  
