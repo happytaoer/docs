@@ -68,7 +68,7 @@
             "schema": {
               "type": "string",
               "format": "date-time",
-              "example": "2013-03-15T16:41:56+08:00"
+              "example": "2013-03-15T16:41:56Z"
             }
           },
           {
@@ -78,7 +78,7 @@
             "schema": {
               "type": "string",
               "format": "date-time",
-              "example": "2013-03-15T16:41:56+08:00"
+              "example": "2013-03-15T16:41:56Z"
             }
           },
           {
@@ -88,7 +88,7 @@
             "schema": {
               "type": "string",
               "format": "date-time",
-              "example": "2013-03-15T16:41:56+08:00"
+              "example": "2013-03-15T16:41:56Z"
             }
           },
           {
@@ -98,7 +98,7 @@
             "schema": {
               "type": "string",
               "format": "date-time",
-              "example": "2013-03-15T16:41:56+08:00"
+              "example": "2013-03-15T16:41:56Z"
             }
           },
           {  
