@@ -27,7 +27,8 @@
               "format": "int32",
               "minimum": 1,  
               "maximum": 50,  
-              "default": 20  
+              "default": 20,
+              "example": 20
             }  
           },  
           {  
@@ -38,7 +39,8 @@
               "type": "integer",  
               "format": "int32",
               "minimum": 1,  
-              "default": 1  
+              "default": 1,
+              "example": 1
             }  
           },  
           {  
@@ -46,7 +48,8 @@
             "in": "query",  
             "description": "Source language code",  
             "schema": {  
-              "type": "string"
+              "type": "string",
+              "example": "en"
             }  
           },  
           {  
@@ -54,9 +57,50 @@
             "in": "query",  
             "description": "Target language code",  
             "schema": {  
-              "type": "string"
+              "type": "string",
+              "example": "zh"
             }  
           },  
+          {
+            "name": "create_time_min",
+            "in": "query",
+            "description": "Minimum creation timestamp for the translations (in ISO 8601 format)",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2013-03-15T16:41:56+08:00"
+            }
+          },
+          {
+            "name": "create_time_max",
+            "in": "query",
+            "description": "Maximum creation timestamp for the translations (in ISO 8601 format)",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2013-03-15T16:41:56+08:00"
+            }
+          },
+          {
+            "name": "update_time_min",
+            "in": "query",
+            "description": "Minimum update timestamp for the translations (in ISO 8601 format)",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2013-03-15T16:41:56+08:00"
+            }
+          },
+          {
+            "name": "update_time_max",
+            "in": "query",
+            "description": "Maximum update timestamp for the translations (in ISO 8601 format)",
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2013-03-15T16:41:56+08:00"
+            }
+          },
           {  
             "name": "jt-api-key",  
             "in": "header",  
