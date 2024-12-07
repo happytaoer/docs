@@ -11,9 +11,3 @@ Step 3: Enable the Webhook trigger to start receiving translated docs.
 ## Webhooks Retries
 
 JsonTrans uses the POST method to enable event-driven automation and send translated docs in real-time. To ensure exceptional reliability and deliverability of shipping notifications, should JsonTrans fail to send you a Webhook message, up to 3 retries will be attempted within 1 hour.
-
-Retries are implemented with exponential backoff. The formula is 2^(number of retries) x 30s. Here's JsonTrans's automatic retry schedule:
-
-First retry after 30 seconds
-Second retry after 60 seconds (1 minute)
-Third retry after 120 seconds (2 minutes)
