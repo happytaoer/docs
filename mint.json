@@ -61,6 +61,14 @@
         "api-reference/endpoint/getlang",
         "api-reference/endpoint/detectlang"
       ]
+    },
+    {
+      "group": "Webhook",
+      "pages": [
+        "api-reference/webhook_overview",
+        "api-reference/webhook-specifications",
+        "api-reference/webhook-outgoing-ip"
+      ]
     }
   ],
   "footerSocials": {
