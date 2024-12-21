@@ -51,8 +51,7 @@
         "api-reference/endpoint/get",
         "api-reference/endpoint/create",
         "api-reference/endpoint/delete",
-        "api-reference/endpoint/getbyid",
-        "api-reference/endpoint/update"
+        "api-reference/endpoint/getbyid"
       ]
     },
     {
