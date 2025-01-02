@@ -327,7 +327,12 @@
                           "type": "string",  
                           "format": "date-time",  
                           "example": "2024-11-16T02:27:42.763577+00:00"  
-                        }  
+                        },
+                        "ignored_fields": {  
+                          "type": "string",  
+                          "description": "Ignored fields",  
+                          "example": "image,url"  
+                        }
                       }  
                     }  
                   }  
@@ -757,7 +762,12 @@
             "format": "date-time",  
             "description": "Timestamp when the translation was last updated",  
             "example": "2024-11-16T02:27:42.763577+00:00"  
-          }  
+          },
+          "ignored_fields": {  
+            "type": "string",  
+            "description": "Ignored fields",  
+            "example": "image,url"  
+          }
         }  
       },  
       "TranslationRequest": {  
@@ -782,7 +792,12 @@
             "type": "string",  
             "description": "Original JSON text to be translated",  
             "example": "{\"text\": \"Hello, world!\"}"  
-          }  
+          },
+          "ignored_fields": {  
+            "type": "string",  
+            "description": "Ignored fields",  
+            "example": "image,url"
+          }
         }  
       },
       "TranslationUpdateRequest": {  
