@@ -332,6 +332,10 @@
                           "type": "string",  
                           "description": "Ignored fields",  
                           "example": "image,url"  
+                        },
+                        "char_total": {  
+                          "type": "integer",  
+                          "example": 13
                         }
                       }  
                     }  
@@ -767,6 +771,9 @@
             "type": "string",  
             "description": "Ignored fields",  
             "example": "image,url"  
+          },"char_total": {  
+            "type": "integer",  
+            "example": 13
           }
         }  
       },  
